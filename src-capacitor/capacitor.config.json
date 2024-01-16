@@ -1,0 +1,8 @@
+{
+  "appId": "org.capacitor.piggy.app",
+  "appName": "piggy",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}

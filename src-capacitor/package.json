@@ -1,0 +1,13 @@
+{
+  "name": "piggy",
+  "version": "0.0.1",
+  "description": "piggery management app",
+  "author": "jojohn-tabal",
+  "private": true,
+  "dependencies": {
+    "@capacitor/android": "^5.0.0",
+    "@capacitor/app": "^5.0.0",
+    "@capacitor/cli": "^5.0.0",
+    "@capacitor/core": "^5.0.0"
+  }
+}
