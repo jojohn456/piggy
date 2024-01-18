@@ -1,10 +1,17 @@
 <template>
-    <q-footer elevated class="bg-grey-8 text-white">
+    <q-footer class="bg-purple text-white">
       <q-toolbar>
         <q-toolbar-title>
-          <div>Piggy</div>
+          <div class="row">
+            <div class="col-4" align="left">Piggy</div>
+            <div class="col-4" align="center">
+              <q-avatar v-on:click="$router.push('/')" style="cursor:pointer">
+                <img src="/images/Piggy.png" alt="logo" loading="lazy" /> 
+              </q-avatar>
+            </div>
+            <div class="col-4" align="right">Jojohn Tabal</div>
+          </div>
         </q-toolbar-title>
-        <div align="right">Jojohn Tabal</div>
       </q-toolbar>
     </q-footer>
 </template>
