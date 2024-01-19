@@ -7,9 +7,14 @@ const routes: RouteRecordRaw[] = [
     children: [{ path: '', component: () => import('../views/Index.vue') }],
   },
   {
-    path: '/pregnancy-calculator',
+    path: '/pregnancy-tracker',
     component: () => import('layouts/Master.vue'),
-    children: [{ path: '', component: () => import('../views/PregnancyCalculator.vue') }],
+    children: [{ path: '', component: () => import('../views/PregnancyTracker.vue') }],
+  },
+  {
+    path: '/add-mom-pig',
+    component: () => import('layouts/Master.vue'),
+    children: [{ path: '', component: () => import('../views/AddMomPig.vue') }],
   },
 
   // Always leave this as last one,

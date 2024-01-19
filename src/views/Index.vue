@@ -3,10 +3,10 @@
  <div class="row">
  <div class="col-12 p-3">
         <v-card class="w-full">
-        <v-card-body v-on:click="$router.push('/pregnancy-calculator')" style="cursor:pointer">
+        <v-card-body v-on:click="$router.push('/pregnancy-tracker')" style="cursor:pointer">
           <div align="center">
               <img src="/images/Pregnancy Tracker.png" width="90px" height="auto" alt="logo" loading="lazy" /> 
-           <h4>Pregnancy Calculator</h4>
+           <h4>Pregnancy Tracker</h4>
           </div>
         </v-card-body>
         </v-card>

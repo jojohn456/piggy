@@ -15,7 +15,10 @@
   "dependencies": {
     "@code-coaching/vuetiful": "^0.26.0",
     "@quasar/extras": "^1.16.4",
+    "@vueuse/rxjs": "^10.7.2",
+    "dexie": "^3.2.4",
     "quasar": "^2.6.0",
+    "rxjs": "^7.8.1",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0"
   },
