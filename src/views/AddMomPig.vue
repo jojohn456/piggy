@@ -38,6 +38,21 @@
 </div>
         </v-card-body>
 </v-card>
+<!-- Dialog -->
+<q-dialog v-model="alert">
+      <q-card>
+        <q-card-section>
+          <div class="text-h6">Success</div>
+        </q-card-section>
+        <q-card-section class="q-pt-none">
+          Mom Pig Successfully Added
+        </q-card-section>
+        <q-card-actions align="right">
+          <q-btn flat label="OK" color="primary" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+<!-- /Dialog -->
     </q-page>
     </template>
     
@@ -50,6 +65,7 @@
     import { VButton, VCard, VCardBody } from '@code-coaching/vuetiful';
     import {MomPig} from '../models/MomPig';
     import { db } from '../db';
+    import { LocalNotifications } from '@capacitor/local-notifications'
  
     export default defineComponent({
       name: 'AddMomPig',
@@ -67,7 +83,8 @@
             note: '',
             first_heat: '',
             second_heat: '',
-            pregnant: ''
+            pregnant: '',
+            alert: false,
           };
       },
       mounted() {
@@ -78,25 +95,34 @@
       methods: {
         async computeDate(){
          var mydate = new Date(this.the_date);
-         this.first_heat = date.addToDate(mydate, { days: 21 });
-         this.first_heat = date.formatDate(this.first_heat, 'YYYY/MM/DD')
-         this.second_heat = date.addToDate(mydate, { days: 42 });
-         this.second_heat = date.formatDate(this.second_heat, 'YYYY/MM/DD')
-         this.pregnant = date.addToDate(mydate, { days: 114 });
-         this.pregnant = date.formatDate(this.pregnant, 'YYYY/MM/DD')
+         this.$data.first_heat = date.addToDate(mydate, { days: 21 });
+         this.$data.first_heat = date.formatDate(this.first_heat, 'YYYY/MM/DD')
+         this.$data.second_heat = date.addToDate(mydate, { days: 42 });
+         this.$data.second_heat = date.formatDate(this.second_heat, 'YYYY/MM/DD')
+         this.$data.pregnant = date.addToDate(mydate, { days: 114 });
+         this.$data.pregnant = date.formatDate(this.pregnant, 'YYYY/MM/DD')
  
          const id = await db.MomPigs.add({
-          Name: this.name,
-          TheDate: this.the_date,
-          Note: this.note,
-          FirstHeat: this.first_heat,
-          SecondHeat: this.second_heat,
-          Pregnant: this.pregnant
+          Name: this.$data.name,
+          TheDate: this.$data.the_date,
+          Note: this.$data.note,
+          FirstHeat: this.$data.first_heat,
+          SecondHeat: this.$data.second_heat,
+          Pregnant: this.$data.pregnant
         });
 
-        this.name = '';
-        this.the_date = new Date(this.the_date);
-        this.note = '';
+        this.$data.name = '';
+        this.$data.the_date = new Date(this.the_date);
+        this.$data.note = '';
+
+     LocalNotifications.schedule({
+  notifications: [{
+   title: 'Piggy'+ this.$data.name,
+   body: 'Check '+ this.$data.name + 'First Heat',
+   schedule: { on: { day: 21 }, allowWhileIdle: true, every: 'day' }
+  }]});
+
+        this.$data.alert=true;
         }
       }
     });
