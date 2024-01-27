@@ -5,5 +5,5 @@ export interface MomPig {
     Note: string;
     FirstHeat: string;
     SecondHeat: string;
-    Pregnant: string;
+    Farrowing: string;
 }

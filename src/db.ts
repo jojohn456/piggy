@@ -9,7 +9,7 @@ export class MySubClassedDexie extends Dexie {
   constructor() {
     super('myDatabase');
     this.version(1).stores({
-        MomPigs: '++id, Name, TheDate, Note, FirstHeat, SecondHeat, Pregnant' // Primary key and indexed props
+        MomPigs: '++id, Name, TheDate, Note, FirstHeat, SecondHeat, Farrowing' // Primary key and indexed props
     });
   }
 }

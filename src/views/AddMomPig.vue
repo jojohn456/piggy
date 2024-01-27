@@ -83,14 +83,14 @@
             note: '',
             first_heat: '',
             second_heat: '',
-            pregnant: '',
+            farrowing: '',
             alert: false,
           };
       },
       mounted() {
         const timeStamp = Date.now()
         const formattedString = date.formatDate(timeStamp, 'YYYY/MM/DD'); 
-        this.the_date = formattedString;
+        this.$data.the_date = formattedString;
       },
       methods: {
         async computeDate(){
@@ -99,8 +99,8 @@
          this.$data.first_heat = date.formatDate(this.first_heat, 'YYYY/MM/DD')
          this.$data.second_heat = date.addToDate(mydate, { days: 42 });
          this.$data.second_heat = date.formatDate(this.second_heat, 'YYYY/MM/DD')
-         this.$data.pregnant = date.addToDate(mydate, { days: 114 });
-         this.$data.pregnant = date.formatDate(this.pregnant, 'YYYY/MM/DD')
+         this.$data.farrowing = date.addToDate(mydate, { days: 114 });
+         this.$data.farrowing = date.formatDate(this.farrowing, 'YYYY/MM/DD')
  
          const id = await db.MomPigs.add({
           Name: this.$data.name,
@@ -108,7 +108,7 @@
           Note: this.$data.note,
           FirstHeat: this.$data.first_heat,
           SecondHeat: this.$data.second_heat,
-          Pregnant: this.$data.pregnant
+          Farrowing: this.$data.farrowing
         });
 
         this.$data.name = '';
@@ -120,6 +120,20 @@
    title: 'Piggy'+ this.$data.name,
    body: 'Check '+ this.$data.name + 'First Heat',
    schedule: { on: { day: 21 }, allowWhileIdle: true, every: 'day' }
+  }]});
+
+  LocalNotifications.schedule({
+  notifications: [{
+   title: 'Piggy'+ this.$data.name,
+   body: 'Check '+ this.$data.name + 'Second Heat',
+   schedule: { on: { day: 42 }, allowWhileIdle: true, every: 'day' }
+  }]});
+
+  LocalNotifications.schedule({
+  notifications: [{
+   title: 'Piggy'+ this.$data.name,
+   body: 'Check '+ this.$data.name + 'Farrowing',
+   schedule: { on: { day: 114 }, allowWhileIdle: true, every: 'day' }
   }]});
 
         this.$data.alert=true;
