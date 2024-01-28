@@ -14,10 +14,10 @@
       <h3>{{ MomPig.Name }}</h3>
       <p>Date: {{ MomPig.TheDate }}</p> 
       <p>First Heat: {{ MomPig.FirstHeat }}</p> 
-      <p>2nd Heat: {{ MomPig.SecondHeat }}</p> 
+      <p>Second Heat: {{ MomPig.SecondHeat }}</p> 
+      <p>Vitamins: {{ MomPig.Vitamins }}</p> 
       <p>Farrowing: {{ MomPig.Farrowing }}</p> 
       <p>Notes: {{ MomPig.Note }}</p> 
-      <p>ID: {{ MomPig.id }}</p> 
     </v-card-body>
     <v-card-footer class="p-3">
       <v-button class="w-full" size="xl" variant="filled-error" v-on:click="removeItem(MomPig.id)">Delete</v-button>
@@ -35,6 +35,7 @@
     
     <script lang="ts">
     import { defineComponent } from 'vue';
+    import { useQuasar } from 'quasar';
     import { VButton, VCard, VCardBody, VCardFooter } from '@code-coaching/vuetiful';
     import { db } from '../db';
     import { liveQuery } from "dexie";
@@ -44,6 +45,7 @@
       name: 'PregnancyTracker',
       components: { VButton, VCard, VCardBody, VCardFooter },
       setup(){
+        const $q = useQuasar();
         return {
         db,
         MomPigs: useObservable(
@@ -60,8 +62,22 @@
             db.MomPigs.clear()
         },
         removeItem(id){
-          console.log('run');
-            db.MomPigs.where('id').equals(id).delete();
+        
+          this.$q.dialog({
+        dark: false,
+        title: 'Confirm',
+        message: 'Would you like to delete this item?',
+        cancel: true,
+        persistent: true
+      }).onOk(() => {
+        db.MomPigs.where('id').equals(id).delete();
+      }).onCancel(() => {
+        // console.log('>>>> Cancel')
+      }).onDismiss(() => {
+        // console.log('I am triggered on both OK and Cancel')
+      })
+
+
         }
        }
     });
