@@ -7,7 +7,7 @@
 
 | Task    | Status | Items  | 
 | ------- | ------ | ---------- |
-| Migrate to DaisyUI | Pending | <ul><li>- [x] Task 1</li><li>- [ ] Task 2</li></ul> |
+| Migrate to DaisyUI | Pending | <ul><li>- [ ] Install and Configure</li></ul> |
 
 ## QuasarJS
 
