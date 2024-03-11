@@ -8,6 +8,7 @@
 | Task    | Status | Items  | 
 | ------- | ------ | ---------- |
 | Migrate to DaisyUI | Pending | <ul><li>- [ ] Install and Configure</li><li>- [ ] Fix Markups</li></ul> |
+| Android Notification | On-going | <ul><li>- [ ] Configure</li><li>- [ ] Add Functions</li></ul> |
 
 ## QuasarJS
 
