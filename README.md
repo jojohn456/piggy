@@ -3,6 +3,12 @@
 <div align="center"><img src="https://github.com/jojohn456/piggy/blob/main/public/images/Piggy.png" width="150px" height="auto" alt="Logo"></div></p>
 <p align="center">A piggery management app.</p>
 
+## Roadmap
+
+| Task    | Status | Items  | 
+| ------- | ------ | ---------- |
+| Migrate to DaisyUI | Pending | <ul><li>- [x] Task 1</li><li>- [ ] Task 2</li></ul> |
+
 ## QuasarJS
 
 <p align="center"><img src="https://i.imgur.com/RjjykYC.png" width="150px" height="auto" alt="Logo"></a></p>
