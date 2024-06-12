@@ -1,10 +1,10 @@
 <template>
-    <q-layout>
-    <q-page-container>
+  <q-layout>
+    <q-page-container class="container mx-auto">
       <router-view />
     </q-page-container>
     <Navbar />
-    </q-layout>
+  </q-layout>
 </template>
 
 <script lang="ts">
@@ -13,6 +13,6 @@ import Navbar from '../components/Navbar.vue';
 
 export default defineComponent({
   name: 'Master',
-  components: {Navbar},
+  components: { Navbar },
 });
 </script>

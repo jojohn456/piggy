@@ -1,41 +1,48 @@
 <template>
-<q-page>
- <div class="row">
- <div class="col-12 p-3">
-        <v-card class="w-full">
-        <v-card-body v-on:click="$router.push('/pregnancy-tracker')" style="cursor:pointer">
-          <div align="center">
-              <img src="/images/Pregnancy Tracker.png" width="90px" height="auto" alt="logo" loading="lazy" /> 
-           <h4>Pregnancy Tracker</h4>
+  <q-page>
+    <div class="row">
+      <div class="col-12 p-3">
+        <div class="card bg-white w-full shadow-xl">
+          <div
+            class="card-body"
+            v-on:click="$router.push('/pregnancy-tracker')"
+            style="cursor: pointer"
+          >
+            <div align="center">
+              <img
+                src="/images/Pregnancy Tracker.png"
+                width="90px"
+                height="auto"
+                alt="logo"
+                loading="lazy"
+              />
+              <h4>Pregnancy Tracker</h4>
+            </div>
           </div>
-        </v-card-body>
-        </v-card>
- </div>
-</div>
-</q-page>
+        </div>
+      </div>
+    </div>
+  </q-page>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { VButton, VCard, VCardBody } from '@code-coaching/vuetiful';
 
 export default defineComponent({
   name: 'Index',
-  setup(){
-    console.log("Index");
+  setup() {
+    console.log('Index');
   },
-  components: { VCard, VCardBody },
+  components: {},
   props: {},
   data: function () {
-      return {};
+    return {};
   },
   mounted() {
-    console.log("Index");
+    console.log('Index');
   },
-  methods: {}
+  methods: {},
 });
 </script>
