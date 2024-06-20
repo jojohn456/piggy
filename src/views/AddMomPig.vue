@@ -75,13 +75,13 @@ export default defineComponent({
   },
   data: function () {
     return {
-      name: '',
-      the_date: '',
-      note: '',
-      first_heat: '',
-      second_heat: '',
-      vitamins: '',
-      farrowing: '',
+      name: this.$props.mompig?.Name,
+      the_date: this.$props.mompig?.TheDate,
+      note: this.$props.mompig?.Note,
+      first_heat: this.$props.mompig?.FirstHeat,
+      second_heat: this.$props.mompig?.SecondHeat,
+      vitamins: this.$props.mompig?.Vitamins,
+      farrowing: this.$props.mompig?.Farrowing,
     };
   },
   mounted() {

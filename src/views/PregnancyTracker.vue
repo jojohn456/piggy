@@ -53,6 +53,8 @@ import { useQuasar } from 'quasar';
 import { db } from '../db';
 import { liveQuery } from 'dexie';
 import { useObservable } from '@vueuse/rxjs';
+import { MomPig } from 'src/models/MomPig';
+import { Interface } from 'readline';
 
 export default defineComponent({
   name: 'PregnancyTracker',
@@ -71,7 +73,7 @@ export default defineComponent({
     reset() {
       db.MomPigs.clear();
     },
-    removeItem(id) {
+    removeItem(id: number) {
       this.$q
         .dialog({
           dark: false,
@@ -83,12 +85,8 @@ export default defineComponent({
         .onOk(() => {
           db.MomPigs.where('id').equals(id).delete();
         })
-        .onCancel(() => {
-          // console.log('>>>> Cancel')
-        })
-        .onDismiss(() => {
-          // console.log('I am triggered on both OK and Cancel')
-        });
+        .onCancel(() => {})
+        .onDismiss(() => {});
     },
   },
 });
