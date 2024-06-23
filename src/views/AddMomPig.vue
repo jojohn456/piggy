@@ -71,10 +71,11 @@ export default defineComponent({
   },
   components: {},
   props: {
-    mompig: { type: Object as PropType<MomPig> },
+    mompig: { type: Object as PropType<MomPig>, required: true },
   },
   data: function () {
     return {
+      id: this.$props.mompig?.id,
       name: this.$props.mompig?.Name,
       the_date: this.$props.mompig?.TheDate,
       note: this.$props.mompig?.Note,
@@ -92,7 +93,7 @@ export default defineComponent({
   methods: {
     async computeDate() {
       const _validator = new Validator();
-      var data = this.$data;
+      let data = this.$data;
       _validator.make(data, {
         name: 'required',
       });
@@ -106,7 +107,7 @@ export default defineComponent({
         return;
       }
 
-      var mydate = new Date(this.the_date);
+      let mydate = new Date(this.the_date);
       this.$data.first_heat = date.addToDate(mydate, { days: 21 });
       this.$data.first_heat = date.formatDate(
         this.$data.first_heat,
@@ -126,6 +127,7 @@ export default defineComponent({
       );
 
       await db.MomPigs.add({
+        id: this.$props.mompig?.id,
         Name: this.$data.name,
         TheDate: this.$data.the_date,
         Note: this.$data.note,
@@ -138,6 +140,7 @@ export default defineComponent({
       LocalNotifications.schedule({
         notifications: [
           {
+            id: this.$props.mompig?.id,
             title: 'Piggy' + this.$data.name,
             body: 'Check ' + this.$data.name + 'First Heat',
             schedule: { on: { day: 21 }, allowWhileIdle: true, every: 'day' },
@@ -148,6 +151,7 @@ export default defineComponent({
       LocalNotifications.schedule({
         notifications: [
           {
+            id: this.$props.mompig?.id,
             title: 'Piggy' + this.$data.name,
             body: 'Check ' + this.$data.name + 'Second Heat',
             schedule: { on: { day: 42 }, allowWhileIdle: true, every: 'day' },
@@ -158,6 +162,7 @@ export default defineComponent({
       LocalNotifications.schedule({
         notifications: [
           {
+            id: this.$props.mompig?.id,
             title: 'Piggy' + this.$data.name,
             body: 'Check ' + this.$data.name + 'Farrowing',
             schedule: { on: { day: 114 }, allowWhileIdle: true, every: 'day' },

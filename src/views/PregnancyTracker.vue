@@ -19,9 +19,8 @@
               <div
                 class="card-body"
                 v-on:click="$router.push('/pregnancy-tracker')"
-                style="cursor: pointer"
               >
-                <h3>{{ MomPig.Name }}</h3>
+                <h3 class="font-bold">{{ MomPig.Name }}</h3>
                 <p>Date: {{ MomPig.TheDate }}</p>
                 <p>First Heat: {{ MomPig.FirstHeat }}</p>
                 <p>Second Heat: {{ MomPig.SecondHeat }}</p>
@@ -32,7 +31,7 @@
                   class="btn btn-error w-full"
                   size="xl"
                   variant="filled-error"
-                  v-on:click="removeItem(MomPig.id)"
+                  v-on:click="removeItem(MomPig.id as number)"
                 >
                   Delete
                 </button>
@@ -53,8 +52,6 @@ import { useQuasar } from 'quasar';
 import { db } from '../db';
 import { liveQuery } from 'dexie';
 import { useObservable } from '@vueuse/rxjs';
-import { MomPig } from 'src/models/MomPig';
-import { Interface } from 'readline';
 
 export default defineComponent({
   name: 'PregnancyTracker',
@@ -84,9 +81,7 @@ export default defineComponent({
         })
         .onOk(() => {
           db.MomPigs.where('id').equals(id).delete();
-        })
-        .onCancel(() => {})
-        .onDismiss(() => {});
+        });
     },
   },
 });
